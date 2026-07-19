@@ -1,1 +1,1 @@
-import{t as e}from"./Client-DZey10sr.mjs";export{e as Client};
+import{t as e}from"./Client-DZey10sr.mjs";function t(e){return`"${e.replaceAll(`"`,`""`)}"`}export{e as Client,t as escapeIdentifier};

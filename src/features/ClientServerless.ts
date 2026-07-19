@@ -1,8 +1,8 @@
 import { after } from "next/server";
 
-import { Client } from "#/features/Client";
+import { Client } from "#/Features/Client";
 
-import type { ClientOptions } from "#/types/ClientOptions";
+import type { ClientOptions } from "#/Types/ClientOptions";
 
 export class ClientServerless extends Client {
   public constructor(options: ClientOptions) {

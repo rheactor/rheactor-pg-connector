@@ -1,4 +1,4 @@
-import { Client } from "#/features/Client";
+import { Client } from "#/Features/Client";
 
 export const client = new Client({
   host: process.env.POSTGRES_HOST,

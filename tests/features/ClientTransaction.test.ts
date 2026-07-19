@@ -2,8 +2,8 @@ import { describe, expect, it } from "vitest";
 
 import { client } from "#tests/fixtures";
 
-import type { Client } from "#/features/Client";
-import type { ClientTransaction } from "#/features/ClientTransaction";
+import type { Client } from "#/Features/Client";
+import type { ClientTransaction } from "#/Features/ClientTransaction";
 
 async function select(transaction: Client | ClientTransaction, table: string) {
   const { rows } = await transaction.query<{ id: number }>(`SELECT id FROM ${table}`);

@@ -1,4 +1,4 @@
-import { QueryResult } from "#/features/QueryResult";
+import { QueryResult } from "#/Features/QueryResult";
 
 import type { Pool, PoolClient, QueryResultRow } from "pg";
 

@@ -1,5 +1,5 @@
-import { TransactionRollback } from "#/errors/TransactionRollback";
-import { ClientAbstract } from "#/features/ClientAbstract";
+import { TransactionRollback } from "#/Errors/TransactionRollback";
+import { ClientAbstract } from "#/Features/ClientAbstract";
 
 import type { Pool, PoolClient } from "pg";
 
