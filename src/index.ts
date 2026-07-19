@@ -1,3 +1,3 @@
 export { Client } from "#/Features/Client";
 
-export { escapeIdentifier } from "#/Services/EscapeService";
+export { escapeIdentifier, escapeLiteral } from "#/Services/EscapeService";

@@ -1,1 +1,1 @@
-import{t as e}from"./Client-DZey10sr.mjs";function t(e){return`"${e.replaceAll(`"`,`""`)}"`}export{e as Client,t as escapeIdentifier};
+import{t as e}from"./Client-DZey10sr.mjs";function t(e){return`"${e.replaceAll(`"`,`""`)}"`}function n(e){if(e.includes(`\0`))throw Error(`literal cannot contain null bytes`);return e.includes(`\\`)?` E'${e.replaceAll(`'`,`''`).replaceAll(`\\`,`\\\\`)}'`:`'${e.replaceAll(`'`,`''`)}'`}export{e as Client,t as escapeIdentifier,n as escapeLiteral};
