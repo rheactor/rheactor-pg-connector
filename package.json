@@ -1,0 +1,54 @@
+{
+  "name": "@rheactor/rheactor-pg-connector",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Rheactor PG Connector.",
+  "type": "module",
+  "imports": {
+    "#/*": "./src/*.ts",
+    "#tests/*": "./tests/*.ts"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.mts",
+      "import": "./dist/index.mjs"
+    },
+    "./serverless": {
+      "types": "./dist/index.serverless.d.mts",
+      "import": "./dist/index.serverless.mjs"
+    }
+  },
+  "scripts": {
+    "build": "tsdown",
+    "lint": "npm run typecheck && npm run eslint && npm run oxfmt",
+    "lint:fix": "npm run typecheck && npm run eslint:fix && npm run oxfmt:fix",
+    "typecheck": "tsc --noEmit",
+    "oxfmt": "oxfmt --check ./src ./tests",
+    "oxfmt:fix": "oxfmt --write ./src ./tests",
+    "eslint": "eslint ./src ./tests",
+    "eslint:fix": "eslint --fix ./src ./tests",
+    "test": "vitest --run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "pg": "^8.22.0"
+  },
+  "devDependencies": {
+    "@rheactor/eslint-config-rheactor": "github:rheactor/eslint-config-rheactor",
+    "@types/pg": "^8.20.0",
+    "eslint": "^10.7.0",
+    "next": "^16.2.10",
+    "oxfmt": "^0.59.0",
+    "tsdown": "^0.22.11",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.10"
+  },
+  "peerDependencies": {
+    "next": "^16.2.10"
+  },
+  "peerDependenciesMeta": {
+    "next": {
+      "optional": true
+    }
+  }
+}

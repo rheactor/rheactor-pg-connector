@@ -1,0 +1,1 @@
+import{t as e}from"./Client-DCUAY1KN.mjs";import{after as t}from"next/server.js";var n=class extends e{constructor(e){super(e),t(async()=>this.close())}};export{n as Client};
