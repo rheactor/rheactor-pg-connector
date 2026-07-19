@@ -14,7 +14,11 @@
     "skipLibCheck": true,
     "strict": true,
     "target": "ESNext",
-    "types": ["node"]
+    "types": ["node"],
+    "paths": {
+      "#/*": ["./src/*.ts"],
+      "#tests/*": ["./tests/*.ts"]
+    }
   },
 
   "include": [".env.d.ts", "**/*.ts", "tests/**/*.ts", "vitest.config.ts"],

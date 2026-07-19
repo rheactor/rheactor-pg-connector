@@ -1,16 +1,9 @@
 import { describe, expect, it } from "vitest";
 
-import { Client } from "#/features/Client";
 import { QueryResult } from "#/features/QueryResult";
+import { client } from "#tests/fixtures";
 
-describe("Connection", () => {
-  const client = new Client({
-    host: process.env.POSTGRES_HOST,
-    user: process.env.POSTGRES_USER,
-    password: process.env.POSTGRES_PASSWORD,
-    database: process.env.POSTGRES_DATABASE,
-  });
-
+describe("Client", () => {
   it("query()", async () => {
     const queryResult = await client.query<{ abc: boolean }>("SELECT TRUE AS ABC");
 
