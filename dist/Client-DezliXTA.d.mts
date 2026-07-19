@@ -20,6 +20,7 @@ declare class ClientTransaction extends ClientAbstract<PoolClient> {
   private static savepointCounter;
   static begin<T>(pool: Pool, callback: ClientTransactionCallback<T>): Promise<T>;
   transaction<T>(callback: ClientTransactionCallback<T>): Promise<T>;
+  rollback<R>(result?: R): never;
 }
 //#endregion
 //#region src/types/ClientOptions.d.ts

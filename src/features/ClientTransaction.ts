@@ -1,3 +1,4 @@
+import { TransactionRollback } from "#/errors/TransactionRollback";
 import { ClientAbstract } from "#/features/ClientAbstract";
 
 import type { Pool, PoolClient } from "pg";
@@ -19,6 +20,10 @@ export class ClientTransaction extends ClientAbstract<PoolClient> {
     } catch (error) {
       await client.query("ROLLBACK");
 
+      if (error instanceof TransactionRollback) {
+        return error.result as T;
+      }
+
       throw error;
     } finally {
       client.release();
@@ -37,7 +42,16 @@ export class ClientTransaction extends ClientAbstract<PoolClient> {
     } catch (error) {
       await this.query(`ROLLBACK TO SAVEPOINT ${savepointName}`);
 
+      if (error instanceof TransactionRollback) {
+        return error.result as T;
+      }
+
       throw error;
     }
+  }
+
+  // eslint-disable-next-line @typescript-eslint/class-methods-use-this
+  public rollback<R>(result?: R): never {
+    throw new TransactionRollback<R>(result);
   }
 }
