@@ -3,20 +3,23 @@ import { describe, expect, it } from "vitest";
 import { escapeIdentifier, escapeLiteral } from "#/Services/EscapeService";
 
 describe("EscapeService", () => {
-  type Test = [input: string, output: string];
+  type EscapeIdentifierTest = [input: string, output: string];
 
-  const escaleIdentifierTests: Test[] = [
+  const escapeIdentifierTests: EscapeIdentifierTest[] = [
     ["", '""'],
     ['"', '""""'],
     ['"a"', '"""a"""'],
     ["'", '"\'"'],
   ];
 
-  it.each(escaleIdentifierTests)("escapeIdentifier(%j)", (input, output) => {
+  it.each(escapeIdentifierTests)("escapeIdentifier(%j)", (input, output) => {
     expect(escapeIdentifier(input)).toBe(output);
   });
 
-  const escaleLiteralTests: Test[] = [
+  type EscapeLiteralTest = [input: string | undefined, output: string];
+
+  const escapeLiteralTests: EscapeLiteralTest[] = [
+    [undefined, "''"],
     ["", "''"],
     ["a", "'a'"],
     ["'", "''''"],
@@ -29,7 +32,7 @@ describe("EscapeService", () => {
     ["\t", "'\t'"],
   ];
 
-  it.each(escaleLiteralTests)("escapeLiteral(%j)", (input, output) => {
+  it.each(escapeLiteralTests)("escapeLiteral(%j)", (input, output) => {
     expect(escapeLiteral(input)).toBe(output);
   });
 
