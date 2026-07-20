@@ -41,4 +41,4 @@ declare class Client extends ClientAbstract<Pool> {
   close(): Promise<void>;
 }
 //#endregion
-export { ClientOptions as n, Client as t };
+export { QueryResult$1 as i, ClientOptions as n, ClientTransaction as r, Client as t };
