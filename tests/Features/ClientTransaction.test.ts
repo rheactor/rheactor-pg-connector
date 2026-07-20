@@ -135,6 +135,22 @@ describe("ClientTransaction", () => {
     });
   });
 
+  it("top-level query error", async () => {
+    expect.assertions(2);
+
+    try {
+      await client.transaction(async (l1) => {
+        await l1.query('SELECT * FROM "table_that_does_not_exist_xyz"');
+
+        // Should never get here.
+        expect(true).toBeFalsy();
+      });
+    } catch (error) {
+      expect(error).toBeInstanceOf(Error);
+      expect((error as Error).message).not.toMatch(/savepoint ".+" does not exist/);
+    }
+  });
+
   it("immediate transaction", async () => {
     expect.assertions(1);
 

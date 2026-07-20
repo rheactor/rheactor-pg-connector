@@ -6,7 +6,7 @@ import type { Pool, PoolClient } from "pg";
 export type ClientTransactionCallback<T> = (transaction: ClientTransaction) => Promise<T>;
 
 export class ClientTransaction extends ClientAbstract<PoolClient> {
-  private static savepointCounter = 0;
+  private savepointCounter = 0;
 
   public static async begin<T>(pool: Pool, callback: ClientTransactionCallback<T>) {
     const client = await pool.connect();
@@ -31,7 +31,7 @@ export class ClientTransaction extends ClientAbstract<PoolClient> {
   }
 
   public async transaction<T>(callback: ClientTransactionCallback<T>) {
-    const savepointName = `sp_${++ClientTransaction.savepointCounter}`;
+    const savepointName = `sp_${++this.savepointCounter}`;
 
     try {
       await this.query(`SAVEPOINT ${savepointName}`);
@@ -40,7 +40,11 @@ export class ClientTransaction extends ClientAbstract<PoolClient> {
 
       return result;
     } catch (error) {
-      await this.query(`ROLLBACK TO SAVEPOINT ${savepointName}`);
+      try {
+        await this.query(`ROLLBACK TO SAVEPOINT ${savepointName}`);
+      } catch {
+        // Empty.
+      }
 
       if (error instanceof TransactionRollback) {
         return error.result as T;

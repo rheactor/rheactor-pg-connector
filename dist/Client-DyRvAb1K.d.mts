@@ -17,7 +17,7 @@ declare class ClientAbstract<T extends Pool | PoolClient> {
 //#region src/Features/ClientTransaction.d.ts
 type ClientTransactionCallback<T> = (transaction: ClientTransaction) => Promise<T>;
 declare class ClientTransaction extends ClientAbstract<PoolClient> {
-  private static savepointCounter;
+  private savepointCounter;
   static begin<T>(pool: Pool, callback: ClientTransactionCallback<T>): Promise<T>;
   transaction<T>(callback: ClientTransactionCallback<T>): Promise<T>;
   rollback<R>(result?: R): never;
