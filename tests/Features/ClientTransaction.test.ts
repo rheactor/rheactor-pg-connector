@@ -13,6 +13,8 @@ async function select(transaction: Client | ClientTransaction, table: string) {
 
 describe("ClientTransaction", () => {
   it("nested transactions", async () => {
+    expect.assertions(11);
+
     await client.transaction(async (l1) => {
       await l1.query("CREATE TEMPORARY TABLE nested_test_a (id INT)");
 
@@ -35,7 +37,7 @@ describe("ClientTransaction", () => {
           ]);
         });
 
-        expect(await select(l2, "nested_test_a")).toStrictEqual([
+        await expect(select(l2, "nested_test_a")).resolves.toStrictEqual([
           { id: 10 },
           { id: 20 },
           { id: 30 },
@@ -54,7 +56,7 @@ describe("ClientTransaction", () => {
           l3b.rollback();
         });
 
-        expect(await select(l2, "nested_test_a")).toStrictEqual([
+        await expect(select(l2, "nested_test_a")).resolves.toStrictEqual([
           { id: 10 },
           { id: 20 },
           { id: 30 },
@@ -107,6 +109,8 @@ describe("ClientTransaction", () => {
   });
 
   it("top-level rollback", async () => {
+    expect.assertions(1);
+
     await client.transaction(async (l1) => {
       await l1.query("CREATE TEMPORARY TABLE nested_test_b (id INT)");
       await l1.query("INSERT INTO nested_test_b VALUES (10)");
@@ -128,6 +132,20 @@ describe("ClientTransaction", () => {
 
       // Should never get here.
       expect(true).toBeFalsy();
+    });
+  });
+
+  it("immediate transaction", async () => {
+    expect.assertions(1);
+
+    await client.transaction(async (t1) => {
+      await t1.transaction(async (t2) => {
+        await t2.transaction(async (t3) => {
+          const { rows } = await t3.query("SELECT TRUE AS value");
+
+          expect(rows).toStrictEqual([{ value: true }]);
+        });
+      });
     });
   });
 });

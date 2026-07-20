@@ -17,6 +17,12 @@ describe("Client", () => {
     }
   });
 
+  it("query() Error", async () => {
+    await expect(async () => client.query('SELECT * FROM "nonexistent_table"')).rejects.toThrow(
+      'relation "nonexistent_table" does not exist',
+    );
+  });
+
   it("transaction()", async () => {
     const queryResult = await client.transaction(async (transaction) =>
       transaction.query<{ abc: boolean }>("SELECT TRUE AS ABC"),
