@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { QueryResult } from "#/Features/QueryResult";
+import { QueryResult } from "#/features/QueryResult";
 import { client } from "#tests/fixtures";
 
 describe("Client", () => {

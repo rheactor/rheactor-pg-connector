@@ -1,8 +1,8 @@
 import { DatabaseError } from "pg";
 import type { Pool, PoolClient, QueryResultRow } from "pg";
 
-import { QueryError } from "#/Errors/QueryError";
-import { QueryResult } from "#/Features/QueryResult";
+import { QueryError } from "#/errors/QueryError";
+import { QueryResult } from "#/features/QueryResult";
 
 export class ClientAbstract<T extends Pool | PoolClient> {
   protected constructor(protected readonly client: T) {}

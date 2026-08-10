@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 
-import type { Client } from "#/Features/Client";
-import { ClientTransaction } from "#/Features/ClientTransaction";
+import type { Client } from "#/features/Client";
+import { ClientTransaction } from "#/features/ClientTransaction";
 import { client } from "#tests/fixtures";
 
 async function select(transaction: Client | ClientTransaction, table: string) {

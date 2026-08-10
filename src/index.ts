@@ -1,9 +1,9 @@
-export { QueryError } from "#/Errors/QueryError";
+export { QueryError } from "#/errors/QueryError";
 
-export { Client } from "#/Features/Client";
+export { Client } from "#/features/Client";
 
-export { type ClientTransaction } from "#/Features/ClientTransaction";
+export { type ClientTransaction } from "#/features/ClientTransaction";
 
-export { type QueryResult } from "#/Features/QueryResult";
+export { type QueryResult } from "#/features/QueryResult";
 
-export { type ClientOptions } from "#/Types/ClientOptions";
+export { type ClientOptions } from "#/types/ClientOptions";

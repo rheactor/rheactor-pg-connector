@@ -1,9 +1,9 @@
 import { Pool, TypeOverrides, types } from "pg";
 
-import { ClientAbstract } from "#/Features/ClientAbstract";
-import { ClientTransaction } from "#/Features/ClientTransaction";
-import type { ClientTransactionCallback } from "#/Features/ClientTransaction";
-import type { ClientOptions } from "#/Types/ClientOptions";
+import { ClientAbstract } from "#/features/ClientAbstract";
+import { ClientTransaction } from "#/features/ClientTransaction";
+import type { ClientTransactionCallback } from "#/features/ClientTransaction";
+import type { ClientOptions } from "#/types/ClientOptions";
 
 export const typesExtended = new TypeOverrides();
 
