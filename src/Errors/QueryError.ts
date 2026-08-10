@@ -8,6 +8,7 @@ export class QueryError extends Error {
   public constructor(error: DatabaseError) {
     super(error.message, { cause: error });
 
+    this.name = "QueryError";
     this.severity = error.severity;
     this.code = error.code;
   }

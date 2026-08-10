@@ -5,6 +5,8 @@ import { client } from "#tests/fixtures";
 
 describe("Client", () => {
   it("query()", async () => {
+    expect.assertions(5);
+
     const queryResult = await client.query<{ abc: boolean }>("SELECT TRUE AS ABC");
 
     expect(queryResult).instanceOf(QueryResult);
@@ -18,12 +20,16 @@ describe("Client", () => {
   });
 
   it("query() Error", async () => {
+    expect.assertions(1);
+
     await expect(async () => client.query('SELECT * FROM "nonexistent_table"')).rejects.toThrow(
       'relation "nonexistent_table" does not exist',
     );
   });
 
   it("transaction()", async () => {
+    expect.assertions(5);
+
     const queryResult = await client.transaction(async (transaction) =>
       transaction.query<{ abc: boolean }>("SELECT TRUE AS ABC"),
     );
@@ -47,7 +53,7 @@ describe("Client", () => {
       ["123", 123],
       ["123::BOOLEAN", true],
       ["TIMESTAMP '2000-01-01T00:00:00.123456Z'", new Date(2000, 0, 1, 0, 0, 0, 123)],
-      ["'\\xDEADBEEF'::BYTEA", Buffer.from([0xde, 0xad, 0xbe, 0xef])],
+      [`'\\xDEADBEEF'::BYTEA`, Buffer.from([0xde, 0xad, 0xbe, 0xef])],
       ["'A'::CHAR", "A"],
       ["9223372036854775807::BIGINT", 9_223_372_036_854_775_807n],
       ["'{\"abc\":123}'::JSON", { abc: 123 }],
@@ -55,10 +61,12 @@ describe("Client", () => {
     ];
 
     it.each(fromTests)("from (%j)", async (text, value) => {
+      expect.assertions(2);
+
       const queryResult = await client.query<{ value: unknown }>(`SELECT ${text} AS value`);
 
       expect(queryResult).instanceOf(QueryResult);
-      expect(queryResult.rows[0]).toStrictEqual({ value });
+      expect(queryResult.rows.at(0)).toStrictEqual({ value });
     });
 
     type ToTest = [value: unknown, verification: string, result?: unknown];
@@ -70,19 +78,21 @@ describe("Client", () => {
       [123, "123"],
       [true, "123::BOOLEAN"],
       [new Date(2000, 0, 1, 0, 0, 0, 123), "TIMESTAMP '2000-01-01T00:00:00.123000Z'"],
-      [Buffer.from([0xde, 0xad, 0xbe, 0xef]), "'\\xDEADBEEF'::BYTEA"],
+      [Buffer.from([0xde, 0xad, 0xbe, 0xef]), `'\\xDEADBEEF'::BYTEA`],
       ["A", "'A'::CHAR"],
       [{ abc: 123 }, "'{\"abc\":123}'::JSONB"],
     ];
 
     it.each(toTests)("to (%j)", async (input, verification, result: unknown = true) => {
+      expect.assertions(2);
+
       const queryResult = await client.query<{ verification: boolean }>(
         `SELECT $1 = ${verification} AS verification`,
         [input],
       );
 
       expect(queryResult).instanceOf(QueryResult);
-      expect(queryResult.rows[0]).toStrictEqual({ verification: result });
+      expect(queryResult.rows.at(0)).toStrictEqual({ verification: result });
     });
   });
 });

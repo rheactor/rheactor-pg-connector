@@ -12,6 +12,6 @@ export function escapeLiteral(value: unknown) {
   }
 
   return value.includes("\\")
-    ? ` E'${value.replaceAll("'", "''").replaceAll("\\", "\\\\")}'`
+    ? ` E'${value.replaceAll("'", "''").replaceAll("\\", `\\\\`)}'`
     : `'${value.replaceAll("'", "''")}'`;
 }

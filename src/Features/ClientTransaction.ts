@@ -1,7 +1,7 @@
+import type { Pool, PoolClient } from "pg";
+
 import { TransactionRollback } from "#/Errors/TransactionRollback";
 import { ClientAbstract } from "#/Features/ClientAbstract";
-
-import type { Pool, PoolClient } from "pg";
 
 export type ClientTransactionCallback<T> = (transaction: ClientTransaction) => Promise<T>;
 

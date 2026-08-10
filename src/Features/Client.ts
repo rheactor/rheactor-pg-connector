@@ -1,16 +1,12 @@
-/* eslint-disable unicorn/no-top-level-side-effects */
-import { Pool } from "pg";
-import { TypeOverrides, types } from "pg";
+import { Pool, TypeOverrides, types } from "pg";
 
 import { ClientAbstract } from "#/Features/ClientAbstract";
 import { ClientTransaction } from "#/Features/ClientTransaction";
-
 import type { ClientTransactionCallback } from "#/Features/ClientTransaction";
 import type { ClientOptions } from "#/Types/ClientOptions";
 
 export const typesExtended = new TypeOverrides();
 
-// BigInt
 typesExtended.setTypeParser(types.builtins.INT8, BigInt);
 
 export class Client extends ClientAbstract<Pool> {
