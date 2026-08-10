@@ -34,6 +34,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@rheactor/rheactor-core": "github:@rheactor/rheactor-core",
     "pg": "^8.23.0"
   },
   "devDependencies": {

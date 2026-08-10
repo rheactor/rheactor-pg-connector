@@ -7,8 +7,4 @@ declare class QueryError extends Error {
   constructor(error: DatabaseError);
 }
 //#endregion
-//#region src/Services/EscapeService.d.ts
-declare function escapeIdentifier(identifier: string): string;
-declare function escapeLiteral(value: unknown): string;
-//#endregion
-export { Client, type ClientOptions, type ClientTransaction, QueryError, type QueryResult, escapeIdentifier, escapeLiteral };
+export { Client, type ClientOptions, type ClientTransaction, QueryError, type QueryResult };

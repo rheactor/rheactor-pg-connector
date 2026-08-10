@@ -5,6 +5,7 @@
     "": {
       "name": "@rheactor/rheactor-pg-connector",
       "dependencies": {
+        "@rheactor/rheactor-core": "github:@rheactor/rheactor-core",
         "pg": "^8.23.0",
       },
       "devDependencies": {
@@ -239,6 +240,8 @@
     "@oxlint/binding-win32-x64-msvc": ["@oxlint/binding-win32-x64-msvc@1.77.0", "", { "os": "win32", "cpu": "x64" }, "sha512-+teyvPDZ2RjUvo+SuCqS/UhaJl1QtdW5fWT5NJTV61V5MIuIS90Db9LixmtEGvXixyttiK62P96MSu3UlpviBw=="],
 
     "@quansync/fs": ["@quansync/fs@1.0.0", "", { "dependencies": { "quansync": "^1.0.0" } }, "sha512-4TJ3DFtlf1L5LDMaM6CanJ/0lckGNtJcMjQ1NAV6zDmA0tEHKZtxNKin8EgPaVX1YzljbxckyT2tJrpQKAtngQ=="],
+
+    "@rheactor/rheactor-core": ["@rheactor/rheactor-core@github:rheactor/rheactor-core#ac2c849", { "dependencies": { "tailwind-merge": "^3.6.0" }, "peerDependencies": { "next": "^16.3.0" }, "optionalPeers": ["next"] }, "rheactor-rheactor-core-ac2c849", "sha512-L2s6bP6xWH13ZovvxsHOK6KZwbwPuhju9mcYk0iwr5ClDDLpZIrPeKVeNuaI0e0fmHBAHX1N9wE5QhNdlRFqiQ=="],
 
     "@rheactor/rheactor-oxc-config": ["@rheactor/rheactor-ocx-config@github:rheactor/rheactor-oxc-config#2327035", { "dependencies": { "oxfmt": "^0.62.0", "oxlint": "^1.77.0", "oxlint-tsgolint": "^7.0.2001" }, "peerDependencies": { "next": "^16.3.0", "react": "^19.2.8", "vitest": "^4.1.10" }, "optionalPeers": ["next", "react", "vitest"] }, "rheactor-rheactor-oxc-config-2327035", "sha512-bTDZygukWAz7qloKZ8IHFTMFD78zh+nmV7TSN/vng54ru799JHMeHIxlBcMmFaBIDIga9lnYDbKoK5FcYFVSxA=="],
 
@@ -555,6 +558,8 @@
     "std-env": ["std-env@4.2.0", "", {}, "sha512-oCUKSupKTHX53EyjDtuZQ64pjLJ6yYCtpmEw0goYxtjG9KpbRe8KAsl2tBUGU9DyMcJ0RwJ8GqJAFzMXcXW1Rw=="],
 
     "styled-jsx": ["styled-jsx@5.1.6", "", { "dependencies": { "client-only": "0.0.1" }, "peerDependencies": { "@babel/core": "*", "babel-plugin-macros": "*", "react": ">= 16.8.0 || 17.x.x || ^18.0.0-0 || ^19.0.0-0" }, "optionalPeers": ["@babel/core", "babel-plugin-macros"] }, "sha512-qSVyDTeMotdvQYoHWLNGwRFJHC+i+ZvdBRYosOFgC+Wg1vx4frN2/RG/NA7SYqqvKNLf39P2LSRA2pu6n0XYZA=="],
+
+    "tailwind-merge": ["tailwind-merge@3.6.0", "", {}, "sha512-uxL7qAVQriqRQPAyK3pj66VqskWqoZ37PW94jwOTwNfq/z9oyu1V+eqrZqtR2+fCiXdYOZe/Modt8GtvqNzu+w=="],
 
     "tinybench": ["tinybench@2.9.0", "", {}, "sha512-0+DUvqWMValLmha6lr4kD8iAMK1HzV0/aKnCtWb9v9641TnP/MFb7Pc2bxoxQjTXAErryXVgUOfv2YqNllqGeg=="],
 
