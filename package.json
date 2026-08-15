@@ -22,9 +22,9 @@
     }
   },
   "scripts": {
-    "build": "npm run lint && tsdown",
-    "lint": "npm run typecheck && npm run oxlint && npm run oxfmt",
-    "lint:fix": "npm run typecheck && npm run oxlint:fix && npm run oxfmt:fix",
+    "build": "bun run test && bun run lint && tsdown",
+    "lint": "bun run typecheck && bun run oxlint && bun run oxfmt",
+    "lint:fix": "bun run typecheck && bun run oxlint:fix && bun run oxfmt:fix",
     "oxfmt": "oxfmt --check ./src ./tests",
     "oxfmt:fix": "oxfmt --write ./src ./tests",
     "oxlint": "oxlint ./src ./tests",
@@ -39,16 +39,16 @@
   },
   "devDependencies": {
     "@rheactor/rheactor-oxc-config": "github:rheactor/rheactor-oxc-config",
-    "@types/pg": "^8.21.0",
-    "next": "^16.3.0",
-    "oxfmt": "^0.62.0",
-    "oxlint": "^1.77.0",
+    "@types/pg": "^8.23.1",
+    "next": "^16.3.1",
+    "oxfmt": "^0.64.0",
+    "oxlint": "^1.79.0",
     "tsdown": "^0.22.14",
     "typescript": "^7.0.2",
-    "vitest": "^4.1.10"
+    "vitest": "^4.1.11"
   },
   "peerDependencies": {
-    "next": "^16.3.0"
+    "next": "^16.3.1"
   },
   "peerDependenciesMeta": {
     "next": {

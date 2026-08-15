@@ -28,7 +28,7 @@ interface ClientOptions {
   host: string;
   user: string;
   password: string;
-  database: string;
+  database?: string;
   port?: number;
   applicationName?: string;
   ssl?: PoolConfig["ssl"];
