@@ -8,8 +8,8 @@
   ],
   "type": "module",
   "imports": {
-    "#/*": "./src/*.ts",
-    "#tests/*": "./tests/*.ts"
+    "#/*": "./src/*",
+    "#tests/*": "./tests/*"
   },
   "exports": {
     ".": {
@@ -34,21 +34,22 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@rheactor/rheactor-core": "github:@rheactor/rheactor-core",
     "pg": "^8.23.0"
   },
   "devDependencies": {
     "@rheactor/rheactor-oxc-config": "github:rheactor/rheactor-oxc-config",
+    "@types/node": "^26.4.1",
     "@types/pg": "^8.23.1",
-    "next": "^16.3.1",
-    "oxfmt": "^0.64.0",
-    "oxlint": "^1.79.0",
-    "tsdown": "^0.22.14",
+    "next": "^16.3.4",
+    "oxfmt": "^0.66.0",
+    "oxlint": "^1.81.0",
+    "oxlint-tsgolint": "^7.0.2001",
+    "tsdown": "^0.23.0",
     "typescript": "^7.0.2",
-    "vitest": "^4.1.11"
+    "vitest": "^5.0.0"
   },
   "peerDependencies": {
-    "next": "^16.3.1"
+    "next": "^16.3.4"
   },
   "peerDependenciesMeta": {
     "next": {

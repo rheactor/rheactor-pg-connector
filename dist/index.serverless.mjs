@@ -1,1 +1,1 @@
-import{t as e}from"./Client-BG5-sTk0.mjs";import{after as t}from"next/server.js";var n=class extends e{constructor(e){super(e),t(async()=>this.close())}};export{n as Client};
+import{t as e}from"./Client-BG5-sTk0.mjs";import{after as t}from"next/server";var n=class extends e{constructor(e){super(e),t(async()=>this.close())}};export{n as Client};
